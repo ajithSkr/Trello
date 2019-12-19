@@ -70,7 +70,6 @@ public class TrelloTest {
         jsonNode = new ObjectMapper().readValue(responseData, ObjectNode.class);
         response= trelloAPIClient.updateCard(jsonNode.get("id").asText(),TrelloConstant.key, TrelloConstant.token,"Payment options");
         Assert.assertEquals(response.getStatus(), 200);
-
     }
 
 
