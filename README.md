@@ -12,12 +12,12 @@ Trello is a web-based Kanban-style list-making application which is a subsidiary
 # text in gray
 ```
 
-<span style="color: green"> Some green text </span>
+RED APPLE (&#x1F34E;): 
 
 
 The Trello uses the internal API to create and manage the board, list and cards
 
-###Base Url
+### Base Url
 ```
 https://api.trello.com/
 ```
