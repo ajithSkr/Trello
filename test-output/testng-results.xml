@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="MySuite" duration-ms="2691" started-at="2019-12-30T18:51:07 IST" finished-at="2019-12-30T18:51:10 IST">
+    <groups>
+    </groups>
+    <test name="MyTest" duration-ms="2691" started-at="2019-12-30T18:51:07 IST" finished-at="2019-12-30T18:51:10 IST">
+      <class name="TrelloTest">
+        <test-method status="PASS" signature="te(org.testng.xml.XmlTest)[pri:0, instance:TrelloTest@6dfa915a]" name="te" is-config="true" duration-ms="31973" started-at="2019-12-30T18:50:35 IST" finished-at="2019-12-30T18:51:07 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.xml.XmlTest@b6eb4dab]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- te -->
+        <test-method status="PASS" signature="createBoard()[pri:1, instance:TrelloTest@6dfa915a]" name="createBoard" duration-ms="899" started-at="2019-12-30T18:51:07 IST" description="Create board" finished-at="2019-12-30T18:51:08 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createBoard -->
+        <test-method status="PASS" signature="createList()[pri:2, instance:TrelloTest@6dfa915a]" name="createList" duration-ms="1329" started-at="2019-12-30T18:51:07 IST" description="Create List" finished-at="2019-12-30T18:51:09 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createList -->
+        <test-method status="PASS" signature="createCard()[pri:3, instance:TrelloTest@6dfa915a]" name="createCard" duration-ms="1783" started-at="2019-12-30T18:51:07 IST" description="Create Card" finished-at="2019-12-30T18:51:09 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- createCard -->
+        <test-method status="PASS" signature="updateCardName()[pri:4, instance:TrelloTest@6dfa915a]" name="updateCardName" duration-ms="1783" started-at="2019-12-30T18:51:08 IST" description="Update the card name" finished-at="2019-12-30T18:51:10 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- updateCardName -->
+      </class> <!-- TrelloTest -->
+    </test> <!-- MyTest -->
+  </suite> <!-- MySuite -->
+</testng-results>

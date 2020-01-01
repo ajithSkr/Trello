@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+    <test name="Test">
+        <listeners>
+            <listener class-name="TrelloSuiteAlter"></listener>
+            <listener class-name="TrelloTestListener"></listener>
+        </listeners>
+        <classes>
+            <class name="TrelloTest"></class>
+        </classes>
+    </test>
+</suite>
