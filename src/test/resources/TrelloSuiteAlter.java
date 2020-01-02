@@ -27,7 +27,6 @@ public class TrelloSuiteAlter implements IAlterSuiteListener {
                 parameters.put(entry.getValue(), entry.getKey());
             }
             suite.setParameters(parameters);
-            System.out.println(suite.getParameters());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (APIException e) {

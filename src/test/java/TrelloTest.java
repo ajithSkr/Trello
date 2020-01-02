@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import common.RestClient;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import resources.TrelloAPIClient;
@@ -19,23 +20,24 @@ import javax.ws.rs.core.Response;
 public class TrelloTest {
 
     TrelloAPIClient trelloAPIClient = RestClient.clientFactory(TrelloAPIClient.class, TrelloConstant.URL);
-    static String result = "";
-    static int testId;
 
     @Parameters("Create board")
     @Test(description = "Create board", priority = 1, groups = "Create board")
-    public void createBoard(String id) {
-        testId = Integer.parseInt(id);
+    public void createBoard(String id, ITestContext iTestContext) {
+        int testId = Integer.parseInt(id);
+        iTestContext.setAttribute("testId", testId);
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         JSONObject jsonObject = response.readEntity(JSONObject.class);
-        result = "Board Id = " + jsonObject.get("id").toString();
+        String result = "Board Id = " + jsonObject.get("id").toString();
+        iTestContext.setAttribute("result", result);
     }
 
     @Parameters("Create List")
     @Test(description = "Create List", priority = 2, groups = "Create List")
-    public void createList(String id) throws JsonProcessingException {
-        testId = Integer.parseInt(id);
+    public void createList(String id, ITestContext iTestContext) throws JsonProcessingException {
+        int testId = Integer.parseInt(id);
+        iTestContext.setAttribute("testId", testId);
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);
@@ -44,15 +46,16 @@ public class TrelloTest {
         ).asText(), "unicorn");
         Assert.assertEquals(response.getStatus(), 200);
         JSONObject jsonObject = response.readEntity(JSONObject.class);
-        result = "List Id = " + jsonObject.get("id").toString();
-
+        String result = "List Id = " + jsonObject.get("id").toString();
+        iTestContext.setAttribute("result", result);
 
     }
 
     @Parameters("Create Card")
     @Test(description = "Create Card", priority = 3, groups = "Create Card")
-    public void createCard(String id) throws JsonProcessingException {
-        testId = Integer.parseInt(id);
+    public void createCard(String id, ITestContext iTestContext) throws JsonProcessingException {
+        int testId = Integer.parseInt(id);
+        iTestContext.setAttribute("testId", testId);
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);
@@ -66,13 +69,15 @@ public class TrelloTest {
                 "create payment token");
         Assert.assertEquals(response.getStatus(), 200);
         JSONObject jsonObject = response.readEntity(JSONObject.class);
-        result = "Card Id = " + jsonObject.get("id").toString();
+        String result = "Card Id = " + jsonObject.get("id").toString();
+        iTestContext.setAttribute("result", result);
     }
 
     @Parameters("Update Card")
     @Test(description = "Update the card name", priority = 4, groups = "Update Card")
-    public void updateCardName(String id) throws JsonProcessingException {
-        testId = Integer.parseInt(id);
+    public void updateCardName(String id, ITestContext iTestContext) throws JsonProcessingException {
+        int testId = Integer.parseInt(id);
+        iTestContext.setAttribute("testId", testId);
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);
@@ -91,7 +96,8 @@ public class TrelloTest {
                 "Payment options");
         Assert.assertEquals(response.getStatus(), 200);
         JSONObject jsonObject = response.readEntity(JSONObject.class);
-        result = "Updated card name = " + jsonObject.get("name").toString();
+        String result = "Updated card name = " + jsonObject.get("name").toString();
+        iTestContext.setAttribute("result", result);
     }
 
 

@@ -7,6 +7,7 @@ import org.json.simple.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -28,7 +29,8 @@ public class Common {
         TestRailTestCase testRailTestCase = new TestRailTestCase(sectionName, suiteName, projectName);
         testRailTestCase.addTestCaseFromExcel(new File("src/test/resources/Trello .xlsx"));
         TestRailTestRun testRailTestRun = new TestRailTestRun(sectionName, suiteName, projectName);
-        JSONObject testRun = testRailTestRun.addTestRun("Added test run");
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        JSONObject testRun = testRailTestRun.addTestRun("Test Run - " + timestamp);
         int runId = Integer.parseInt(testRun.get("id").toString());
         JSONArray testCase = testRailTestRun.getTestAutomated(runId);
         for (int i = 0; i < testCase.size(); i++) {
