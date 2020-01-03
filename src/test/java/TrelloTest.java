@@ -5,7 +5,6 @@ import common.RestClient;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.ITestContext;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import resources.TrelloAPIClient;
 import utils.TrelloConstant;
@@ -21,11 +20,8 @@ public class TrelloTest {
 
     TrelloAPIClient trelloAPIClient = RestClient.clientFactory(TrelloAPIClient.class, TrelloConstant.URL);
 
-    @Parameters("Create board")
-    @Test(description = "Create board", priority = 1, groups = "Create board")
-    public void createBoard(String id, ITestContext iTestContext) {
-        int testId = Integer.parseInt(id);
-        iTestContext.setAttribute("testId", testId);
+    @Test(description = "Create board", priority = 1)
+    public void createBoard(ITestContext iTestContext) {
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         JSONObject jsonObject = response.readEntity(JSONObject.class);
@@ -33,11 +29,9 @@ public class TrelloTest {
         iTestContext.setAttribute("result", result);
     }
 
-    @Parameters("Create List")
-    @Test(description = "Create List", priority = 2, groups = "Create List")
-    public void createList(String id, ITestContext iTestContext) throws JsonProcessingException {
-        int testId = Integer.parseInt(id);
-        iTestContext.setAttribute("testId", testId);
+    @Test(description = "Create List", priority = 2)
+    public void createList(
+            ITestContext iTestContext) throws JsonProcessingException {
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);
@@ -51,11 +45,8 @@ public class TrelloTest {
 
     }
 
-    @Parameters("Create Card")
-    @Test(description = "Create Card", priority = 3, groups = "Create Card")
-    public void createCard(String id, ITestContext iTestContext) throws JsonProcessingException {
-        int testId = Integer.parseInt(id);
-        iTestContext.setAttribute("testId", testId);
+    @Test(description = "Create Card", priority = 3)
+    public void createCard(ITestContext iTestContext) throws JsonProcessingException {
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);
@@ -73,11 +64,8 @@ public class TrelloTest {
         iTestContext.setAttribute("result", result);
     }
 
-    @Parameters("Update Card")
-    @Test(description = "Update the card name", priority = 4, groups = "Update Card")
-    public void updateCardName(String id, ITestContext iTestContext) throws JsonProcessingException {
-        int testId = Integer.parseInt(id);
-        iTestContext.setAttribute("testId", testId);
+    @Test(description = "Update the card name", priority = 4)
+    public void updateCardName(ITestContext iTestContext) throws JsonProcessingException {
         Response response = trelloAPIClient.createBoard(TrelloConstant.key, TrelloConstant.token, "payments");
         Assert.assertEquals(response.getStatus(), 200);
         String responseData = response.readEntity(String.class);

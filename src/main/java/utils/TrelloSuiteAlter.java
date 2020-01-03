@@ -1,10 +1,12 @@
+package utils;
+
 import client.APIException;
+import org.apache.commons.text.CaseUtils;
 import org.testng.IAlterSuiteListener;
 import org.testng.xml.XmlSuite;
-import utils.Common;
+import org.testng.xml.XmlTest;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,15 +23,12 @@ public class TrelloSuiteAlter implements IAlterSuiteListener {
         Map<String, String> parameters = new LinkedHashMap<>();
         try {
             Map<String, String> testCases = Common.testRailTests();
-            suite.setIncludedGroups(new ArrayList<>(testCases.values()));
-            ;
             for (Map.Entry<String, String> entry : testCases.entrySet()) {
-                parameters.put(entry.getValue(), entry.getKey());
+                String camelCaseName = CaseUtils.toCamelCase(entry.getValue(), false, ' ', '_', '-', '#', '.', '@');
+                parameters.put(camelCaseName, entry.getKey());
             }
             suite.setParameters(parameters);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (APIException e) {
+        } catch (IOException | APIException e) {
             e.printStackTrace();
         }
 
