@@ -13,9 +13,9 @@ import java.util.Map;
  * @author ajith.athithyan
  * @project Trello
  */
-public class Common {
+public class TestRailCommon {
 
-    public static Map<String, String> testRailTests() throws IOException, APIException {
+    public static Map<String, String> addTestRunToTestRail() throws IOException, APIException {
         Map<String, String> testCases = new LinkedHashMap<>();
         String projectName = "Trello";
         String suiteName = "Trello Suite";

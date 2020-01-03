@@ -4,7 +4,6 @@ import client.APIException;
 import org.apache.commons.text.CaseUtils;
 import org.testng.IAlterSuiteListener;
 import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
@@ -22,7 +21,7 @@ public class TrelloSuiteAlter implements IAlterSuiteListener {
         XmlSuite suite = suites.get(0);
         Map<String, String> parameters = new LinkedHashMap<>();
         try {
-            Map<String, String> testCases = Common.testRailTests();
+            Map<String, String> testCases = TestRailCommon.addTestRunToTestRail();
             for (Map.Entry<String, String> entry : testCases.entrySet()) {
                 String camelCaseName = CaseUtils.toCamelCase(entry.getValue(), false, ' ', '_', '-', '#', '.', '@');
                 parameters.put(camelCaseName, entry.getKey());
