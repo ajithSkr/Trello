@@ -10,11 +10,16 @@ API
 ----
 The Trello uses the internal API to create and manage the board, list and cards
 
+Key and Token
+-----
+When making any API request to Trello, you will need to include your API key, along with an oauth token that was generated using your key.
+
 Base Url
 ----
 ```
 https://api.trello.com/
 ```
+
 
 For Further Reference
 ----
