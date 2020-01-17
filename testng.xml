@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="Suite" parallel="false">
     <test name="Test">
-        <listeners>
-            <listener class-name="utils.TrelloSuiteAlter"></listener>
-            <listener class-name="utils.TrelloTestListener"></listener>
-            <listener class-name="utils.TrelloInvokedMethodListener"></listener>
-        </listeners>
         <classes>
             <class name="TrelloTest"></class>
         </classes>
